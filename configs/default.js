@@ -14,7 +14,20 @@ module.exports = {
         parser : {
             handlebars : 'handlebars',
             styl       : 'stylus',
-            md         : 'marked'
+            md         : 'marked',
+            tmpl : ['jade', 'utc'],
+
+            coffee : 'coffee-script',
+            less : 'less',
+            scss : 'compass',
+            sass : 'compass',
+
+            //.jade后缀的文件使用fis-parser-jade插件编译
+            // https://github.com/visionmedia/jade/blob/master/Readme_zh-cn.md
+            jade : 'jade',
+            jtpl : 'jade-inline',
+
+            tpl    : 'bdtmpl-chassis'
         },
         lint : {
             js: 'jshint'
@@ -156,3 +169,6 @@ module.exports = {
         }
     }
 };
+
+
+

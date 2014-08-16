@@ -1,19 +1,19 @@
 {
-    "name": "scrat",
-    "version": "0.2.4-14",
-    "description": "uc front-end integrated solution",
+    "name": "ppfe",
+    "version": "0.0.1",
+    "description": "pp front-end integrated solution",
     "main": "index.js",
     "preferGlobal": true,
     "bin": {
-        "scrat": "bin/scrat"
+        "ppfe": "bin/ppfe"
     },
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1"
     },
-    "keywords": [ "fis", "uc" ],
+    "keywords": [ "fis", "uc", "pp" ],
     "repository": {
         "type": "git",
-        "url": "https://github.com/fouber/scrat.git"
+        "url": "https://github.com/qdsang/ppfe.git"
     },
     "dependencies": {
         "fis": "1.7.14",
@@ -24,8 +24,28 @@
         "fis-lint-jshint": "0.0.9",
         "fis-parser-marked": "0.0.5",
         "fis-parser-handlebars" : "0.0.1",
-        "fis-optimizer-html-minifier": "0.0.9"
+        "fis-optimizer-html-minifier": "0.0.9",
+        "fis-parser-compass": "0.0.2",
+        "fis-parser-jade": "0.0.9",
+        "fis-parser-less": "0.1.1",
+        "fis-parser-coffee-script": "0.0.2",
+        "fis-parser-bdtmpl-chassis": "0.0.4",
+        "fis-parser-utc": "0.0.2"
     },
     "author": "fouber",
-    "license": "MIT"
+    "license": "MIT",
+    "fisShortcut": {
+        "dev": [
+            "release", "--watch", "--clean", "--live", "--pack", "--dest", "dev"
+        ],
+        "test": [
+            "release", "--clean", "--optimize", "--pack", "--md5", "--dest", "test"
+        ],
+        "stage": [
+            "release", "--clean", "--optimize", "--pack", "--md5", "--dest", "stage"
+        ],
+        "relase": [
+            "release", "--clean", "--optimize", "--pack", "--md5", "--domains", "--dest", "release"
+        ]
+    }
 }
