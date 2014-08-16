@@ -18,11 +18,6 @@ fis.olpm = function(info){
     }
     info.pack = info.pack || fis.olpm.PACK_TYPE_EXTERNAL;
     fis.config.set('olpm', info);
-    var domain = 'http://image.uc.cn';
-    if(info.hasOwnProperty('domain') && info.domain){
-        domain = info.domain.replace(/\/$/, '');
-    }
-    fis.config.set('roadmap.domain', domain);
     fis.config.set('roadmap.path', require('./configs/olpm.js'));
     fis.config.set('modules.prepackager', require('./plugins/postpackager/olpm-pack.js'));
 };
@@ -41,18 +36,19 @@ Object.defineProperty(global, name, {
 // 快捷入口功能
 fis.run = function(argv){
     var shortcut = fis.cli.info['fisShortcut'] || {};
-    var env = argv[2];
+    var mode = argv[2];
 
     // 默认走dev
     if (argv.length < 3) {
-        env = 'dev';
+        mode = 'dev';
     }
-
-    if (shortcut[env]) {
+    
+    if (shortcut[mode]) {
         var newArgv = argv.slice(0,2);
-        newArgv = newArgv.concat(shortcut[env]);
+        newArgv = newArgv.concat(shortcut[mode]);
         argv = newArgv;
-        fis.env = env;
+        fis.mode = mode;
+        console.log('\n开启 ' + mode + ' 模式：' + ' ' + shortcut[mode].join(' '))
     }
 
     fis.cli.run(argv);

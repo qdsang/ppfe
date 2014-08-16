@@ -1,6 +1,6 @@
 {
     "name": "ppfe",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "description": "pp front-end integrated solution",
     "main": "index.js",
     "preferGlobal": true,
@@ -44,7 +44,7 @@
         "stage": [
             "release", "--clean", "--optimize", "--pack", "--md5", "--dest", "stage"
         ],
-        "relase": [
+        "release": [
             "release", "--clean", "--optimize", "--pack", "--md5", "--domains", "--dest", "release"
         ]
     }

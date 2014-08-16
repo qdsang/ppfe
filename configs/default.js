@@ -43,7 +43,14 @@ module.exports = {
     roadmap : {
         ext : {
             jsx : 'js',
-            styl : 'css'
+            styl : 'css',
+            tpl : 'js',
+            less : 'css',
+            scss : 'css',
+            sass : 'css',
+            coffee : 'js',
+            jade : 'html',
+            md: 'html'
         },
         path : [
             {
@@ -81,7 +88,7 @@ module.exports = {
                 release : '/views/${name}/${version}/$1'
             },
             {
-                reg : /^\/component_modules\/(.*)\.(styl|css)$/i,
+                reg : /^\/component_modules\/(.*)\.(styl|css|less|sass|scss)$/i,
                 id : '$1.css',
                 isMod : true,
                 useSprite : true,
@@ -103,7 +110,7 @@ module.exports = {
                 release : '/public/c/$1'
             },
             {
-                reg : /^\/components\/(.*)\.(styl|css)$/i,
+                reg : /^\/components\/(.*)\.(styl|css|less|sass|scss)$/i,
                 id : '${name}/${version}/$1.css',
                 isMod : true,
                 useSprite : true,
