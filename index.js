@@ -1,3 +1,6 @@
+var fs = require('fs'),
+    path = require('path');
+
 var fis = module.exports = require('fis');
 var name = 'ppfe';
 fis.require.prefixes = [ name, 'scrat', 'fis' ];
@@ -33,22 +36,60 @@ Object.defineProperty(global, name, {
     value : fis
 });
 
-// 快捷入口功能
-fis.run = function(argv){
-    var shortcut = fis.cli.info['fisShortcut'] || {};
-    var mode = argv[2];
+function rootPath(){
+    var root = path.resolve('.'), i = 0, num = 3;
+    for (; i < num; i++) {
+        if (fs.existsSync(root + '/package.json')) {
+            break;
+        }else {
+            root = path.dirname(root);
+        }
+    }
 
+    if (i == num) {
+        root = '.';
+    }
+
+    return root;
+}
+
+// 入口功能
+fis.run = function(argv){
+    // 根据 package.json 文件位置定位root目录
+    var root = rootPath();
+    var info = fis.util.readJSON(root + '/package.json');
+
+    var mode = argv[2];
     // 默认走dev
     if (argv.length < 3) {
         mode = 'dev';
     }
     
+    var shortcut = info['fisShortcut'] || {};
     if (shortcut[mode]) {
         var newArgv = argv.slice(0,2);
         newArgv = newArgv.concat(shortcut[mode]);
         argv = newArgv;
         fis.mode = mode;
-        console.log('\n开启 ' + mode + ' 模式：' + ' ' + shortcut[mode].join(' '))
+        if (root != '.') {
+            argv.push('--root');
+            argv.push(root);
+        }
+        console.log('\n开启 ' + mode + ' 模式：' + ' ' + argv.join(' '))
+    }
+
+    var includeConf = info['fisInclude'];
+    if (includeConf) {
+        var includes = includeConf ? includeConf.split('|') : [];
+
+        var rootResolve = path.resolve(root).split(path.sep),
+            nowResolve = path.resolve('.').split(path.sep);
+
+        if (rootResolve.length < nowResolve.length) {
+            includes.push(nowResolve[rootResolve.length]);
+            fis.config.set('project.include', new RegExp('/^\/('+includes.join('|')+')\//i'));
+        }
+
     }
 
     fis.cli.run(argv);
