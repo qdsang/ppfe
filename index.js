@@ -78,18 +78,19 @@ fis.run = function(argv){
         console.log('\n开启 ' + mode + ' 模式：' + ' ' + argv.join(' '))
     }
 
-    var includeConf = info['fisInclude'];
-    if (includeConf) {
-        var includes = includeConf ? includeConf.split('|') : [];
 
-        var rootResolve = path.resolve(root).split(path.sep),
-            nowResolve = path.resolve('.').split(path.sep);
+    var rootResolve = path.resolve(root).split(path.sep),
+        nowResolve = path.resolve('.').split(path.sep);
+    if (rootResolve.length < nowResolve.length) {
+        var includes = [];
+        includes.push(nowResolve[rootResolve.length]);
 
-        if (rootResolve.length < nowResolve.length) {
-            includes.push(nowResolve[rootResolve.length]);
-            fis.config.set('project.include', new RegExp('/^\/('+includes.join('|')+')\//i'));
+        var includeConf = info['fisInclude'];
+        if (includeConf) {
+            includes = includes.concat(includeConf.split('|'));
         }
-
+        
+        fis.config.set('project.include', new RegExp('^\/('+includes.join('|')+')\/', 'i'));
     }
 
     fis.cli.run(argv);
