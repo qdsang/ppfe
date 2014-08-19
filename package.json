@@ -1,6 +1,6 @@
 {
     "name": "ppfe",
-    "version": "0.0.4",
+    "version": "0.0.5",
     "description": "pp front-end integrated solution",
     "main": "index.js",
     "preferGlobal": true,
@@ -30,9 +30,11 @@
         "fis-parser-less": "0.1.1",
         "fis-parser-coffee-script": "0.0.2",
         "fis-parser-bdtmpl-chassis": "0.0.4",
-        "fis-parser-utc": "0.0.2"
+        "fis-parser-utc": "0.0.2",
+        "fis-parser-psd": "0.0.1",
+        "fis-postpackager-simple": "0.0.21"
     },
-    "author": "fouber",
+    "author": ["fouber"],
     "license": "MIT",
     "fisShortcut": {
         "dev": [

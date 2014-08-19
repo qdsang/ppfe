@@ -5,9 +5,11 @@ var plugins = {
 };
 module.exports = {
     urlPrefix : '',
+    releasePrefix : '',
     project : {
         fileType : {
-            text : 'handlebars, jade, ejs, jsx, styl'
+            text : 'handlebars, jade, ejs, jsx, styl, jtpl',
+            image: 'psd'
         }
     },
     modules : {
@@ -27,6 +29,8 @@ module.exports = {
             jade : 'jade',
             jtpl : 'jade-inline',
 
+            psd : 'psd',
+
             tpl    : 'bdtmpl-chassis'
         },
         lint : {
@@ -38,7 +42,8 @@ module.exports = {
         prepackager : [
             plugins.uaeConf,
             plugins.frameworkConf
-        ]
+        ],
+        postpackager : 'simple'
     },
     roadmap : {
         ext : {
@@ -50,9 +55,14 @@ module.exports = {
             sass : 'css',
             coffee : 'js',
             jade : 'html',
-            md: 'html'
+            md: 'html',
+            psd: 'png'
         },
         path : [
+            {
+                reg : /\/(.*)\/\_(.*)$/,
+                release : false
+            },
             {
                 reg : '**.handlebars',
                 release : false,
@@ -81,11 +91,11 @@ module.exports = {
                 release : '/views/c/${name}/${version}/$1'
             },
             {
-                reg : /^\/views\/(.*\.tpl)$/,
+                reg : /^\/(.*)\/(.*\.tpl)$/,
                 useCache : false,
                 isViews : true,
                 isHtmlLike : true,
-                release : '/views/${name}/${version}/$1'
+                release : '/($1)/${name}/${version}/$2'
             },
             {
                 reg : /^\/component_modules\/(.*)\.(styl|css|less|sass|scss)$/i,
@@ -94,7 +104,7 @@ module.exports = {
                 useSprite : true,
                 useHash : false,
                 url : '${urlPrefix}/c/$1.$2',
-                release : '/public/c/$1.$2'
+                release : '${releasePrefix}/c/$1.$2'
             },
             {
                 reg : /^\/component_modules\/(.*\.js)$/i,
@@ -102,12 +112,12 @@ module.exports = {
                 isMod : true,
                 useHash : false,
                 url : '${urlPrefix}/c/$1',
-                release : '/public/c/$1'
+                release : '${releasePrefix}/c/$1'
             },
             {
                 reg : /^\/component_modules\/(.*)$/i,
                 url : '${urlPrefix}/c/$1',
-                release : '/public/c/$1'
+                release : '${releasePrefix}/c/$1'
             },
             {
                 reg : /^\/components\/(.*)\.(styl|css|less|sass|scss)$/i,
@@ -116,7 +126,7 @@ module.exports = {
                 useSprite : true,
                 useHash : false,
                 url : '${urlPrefix}/c/${name}/${version}/$1.$2',
-                release : '/public/c/${name}/${version}/$1.$2'
+                release : '${releasePrefix}/c/${name}/${version}/$1.$2'
             },
             {
                 reg : /^\/components\/(.*\.js)$/i,
@@ -125,26 +135,26 @@ module.exports = {
                 isComponent : true,
                 useHash : false,
                 url : '${urlPrefix}/c/${name}/${version}/$1',
-                release : '/public/c/${name}/${version}/$1'
+                release : '${releasePrefix}/c/${name}/${version}/$1'
             },
             {
                 reg : /^\/components\/(.*)$/i,
                 url : '${urlPrefix}/c/${name}/${version}/$1',
-                release : '/public/c/${name}/${version}/$1'
+                release : '${releasePrefix}/c/${name}/${version}/$1'
             },
             {
-                reg : /^\/views\/(.*\.(?:html?|js))$/,
+                reg : /^\/(.*)\/(.*\.(?:html?|js))$/,
                 useCache : false,
                 isViews : true,
-                url : '${urlPrefix}/${name}/${version}/$1',
-                release : '/public/${name}/${version}/$1'
+                url : '${urlPrefix}/${name}/${version}/$2',
+                release : '${releasePrefix}/${name}/${version}/$2'
             },
             {
-                reg : /^\/views\/(.*)$/,
+                reg : /^\/(.*)\/(.*)$/,
                 useSprite : true,
                 isViews : true,
-                url : '${urlPrefix}/${name}/${version}/$1',
-                release : '/public/${name}/${version}/$1'
+                url : '${urlPrefix}/${name}/${version}/$2',
+                release : '${releasePrefix}/${name}/${version}/$2'
             },
             {
                 reg : /^\/public\/(.*)$/,

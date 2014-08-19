@@ -12,21 +12,24 @@ fis.cli.help.commands = [ 'release', 'install', 'server', 'init'];
 var defaultConfig = require('./configs/default.js');
 fis.config.merge(defaultConfig);
 
-fis.olpm = function(info){
-    if(typeof info === 'string') {
-        info = {
-            code : info,
-            pack : arguments[1]
-        };
-    }
-    info.pack = info.pack || fis.olpm.PACK_TYPE_EXTERNAL;
-    fis.config.set('olpm', info);
-    fis.config.set('roadmap.path', require('./configs/olpm.js'));
-    fis.config.set('modules.prepackager', require('./plugins/postpackager/olpm-pack.js'));
-};
+var defaultSetting = require('./configs/setting.js');
+fis.config.merge(defaultSetting);
 
-fis.olpm.PACK_TYPE_INLINE   = 1;
-fis.olpm.PACK_TYPE_EXTERNAL = 2;
+// fis.olpm = function(info){
+//     if(typeof info === 'string') {
+//         info = {
+//             code : info,
+//             pack : arguments[1]
+//         };
+//     }
+//     info.pack = info.pack || fis.olpm.PACK_TYPE_EXTERNAL;
+//     fis.config.set('olpm', info);
+//     fis.config.set('roadmap.path', require('./configs/olpm.js'));
+//     fis.config.set('modules.prepackager', require('./plugins/postpackager/olpm-pack.js'));
+// };
+
+// fis.olpm.PACK_TYPE_INLINE   = 1;
+// fis.olpm.PACK_TYPE_EXTERNAL = 2;
 //fis.olpm.PACK_TYPE_COMBO    = 3;
 
 //alias
