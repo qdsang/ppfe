@@ -74,28 +74,32 @@ module.exports = {
                 isHtmlLike : true
             },
             {
+                reg : /^\/components\/(.*scrat\.js)$/i,
+                id : '$1',
+                url : '${urlPrefix}/c/$1',
+                release : '${releasePrefix}/c/$1'
+            },
+            {
                 reg : /\.inline\.\w+$/i,
                 release : false
             },
             {
-                reg : '**.jade'
-            },
-            {
-                reg : /^\/component_modules\/(.*\.tpl)$/i,
+                reg : /^\/component_modules\/(.*\.(?:tpl|jade|html))$/i,
                 isHtmlLike : true,
                 release : '/views/c/$1'
             },
             {
-                reg : /^\/components\/(.*\.tpl)$/i,
+                reg : /^\/components\/(.*\.(?:tpl|jade|html))$/i,
                 isHtmlLike : true,
                 release : '/views/c/${name}/${version}/$1'
             },
             {
-                reg : /^\/(.*)\/(.*\.tpl)$/,
+                reg : /^\/(.*)\/(.*\.(?:tpl|jade|html))$/,
                 useCache : false,
                 isViews : true,
                 isHtmlLike : true,
-                release : '/($1)/${name}/${version}/$2'
+                //release : '/$1/${name}/${version}/$2'
+                release : '/$1/$2'
             },
             {
                 reg : /^\/component_modules\/(.*)\.(styl|css|less|sass|scss)$/i,
@@ -121,21 +125,21 @@ module.exports = {
             },
             {
                 reg : /^\/components\/(.*)\.(styl|css|less|sass|scss)$/i,
-                id : '${name}/${version}/$1.css',
+                id : 'components/$1.css',
                 isMod : true,
                 useSprite : true,
                 useHash : false,
-                url : '${urlPrefix}/c/${name}/${version}/$1.$2',
-                release : '${releasePrefix}/c/${name}/${version}/$1.$2'
+                url : '${urlPrefix}/c/components/$1.$2',
+                release : '${releasePrefix}/c/components/$1.$2'
             },
             {
                 reg : /^\/components\/(.*\.js)$/i,
-                id : '${name}/${version}/$1',
+                id : 'components/$1',
                 isMod : true,
                 isComponent : true,
                 useHash : false,
-                url : '${urlPrefix}/c/${name}/${version}/$1',
-                release : '${releasePrefix}/c/${name}/${version}/$1'
+                url : '${urlPrefix}/c/components/$1',
+                release : '${releasePrefix}/c/components/$1'
             },
             {
                 reg : /^\/components\/(.*)$/i,
@@ -143,23 +147,23 @@ module.exports = {
                 release : '${releasePrefix}/c/${name}/${version}/$1'
             },
             {
-                reg : /^\/(.*)\/(.*\.(?:html?|js))$/,
+                reg : /^\/(.*)\/(.*\.(?:html|js|jade))$/,
                 useCache : false,
                 isViews : true,
-                url : '${urlPrefix}/${name}/${version}/$2',
-                release : '${releasePrefix}/${name}/${version}/$2'
+                url : '${urlPrefix}/${name}/${version}/$1/$2',
+                release : '${releasePrefix}/${name}/${version}/$1/$2'
             },
             {
                 reg : /^\/(.*)\/(.*)$/,
                 useSprite : true,
                 isViews : true,
-                url : '${urlPrefix}/${name}/${version}/$2',
-                release : '${releasePrefix}/${name}/${version}/$2'
+                url : '${urlPrefix}/${name}/${version}/$1/$2',
+                release : '${releasePrefix}/${name}/${version}/$1/$2'
             },
             {
                 reg : /^\/public\/(.*)$/,
                 useSprite : true,
-                url : '${urlPrefix}/${name}/${version}/$1',
+                url : '/public/${name}/${version}/$1',
                 release : '/public/${name}/${version}/$1'
             },
             {

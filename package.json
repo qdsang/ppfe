@@ -1,6 +1,6 @@
 {
     "name": "ppfe",
-    "version": "0.0.6",
+    "version": "0.0.7",
     "description": "pp front-end integrated solution",
     "main": "index.js",
     "preferGlobal": true,
