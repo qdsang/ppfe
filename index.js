@@ -93,7 +93,7 @@ fis.run = function(argv){
             includes = includes.concat(includeConf.split('|'));
         }
         
-        fis.config.set('project.include', new RegExp('^\/('+includes.join('|')+')\/', 'i'));
+        fis.config.set('project.include', new RegExp('^\/('+includes.join('|')+')', 'i'));
     }
 
     fis.cli.run(argv);
