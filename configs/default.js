@@ -80,6 +80,10 @@ module.exports = {
                 release : '${releasePrefix}/c/$1'
             },
             {
+                reg : /^\/pkg\/(.*)$/,
+                release : '/pkg/$1'
+            },
+            {
                 reg : /\.inline\.\w+$/i,
                 release : false
             },
@@ -91,14 +95,14 @@ module.exports = {
             {
                 reg : /^\/components\/(.*\.(?:tpl|jade|html))$/i,
                 isHtmlLike : true,
-                release : '/views/c/${name}/${version}/$1'
+                release : '/views/c/$1'
             },
             {
                 reg : /^\/(.*)\/(.*\.(?:tpl|jade|html))$/,
                 useCache : false,
                 isViews : true,
                 isHtmlLike : true,
-                //release : '/$1/${name}/${version}/$2'
+                //release : '/$1/$2'
                 release : '/$1/$2'
             },
             {
@@ -107,7 +111,7 @@ module.exports = {
                 isMod : true,
                 useSprite : true,
                 useHash : false,
-                url : '${urlPrefix}/c/$1.$2',
+                //url : '${urlPrefix}/c/$1.$2',
                 release : '${releasePrefix}/c/$1.$2'
             },
             {
@@ -115,12 +119,12 @@ module.exports = {
                 id : '$1',
                 isMod : true,
                 useHash : false,
-                url : '${urlPrefix}/c/$1',
+                //url : '${urlPrefix}/c/$1',
                 release : '${releasePrefix}/c/$1'
             },
             {
                 reg : /^\/component_modules\/(.*)$/i,
-                url : '${urlPrefix}/c/$1',
+                //url : '${urlPrefix}/c/$1',
                 release : '${releasePrefix}/c/$1'
             },
             {
@@ -129,7 +133,7 @@ module.exports = {
                 isMod : true,
                 useSprite : true,
                 useHash : false,
-                url : '${urlPrefix}/c/components/$1.$2',
+                //url : '${urlPrefix}/c/components/$1.$2',
                 release : '${releasePrefix}/c/components/$1.$2'
             },
             {
@@ -138,37 +142,37 @@ module.exports = {
                 isMod : true,
                 isComponent : true,
                 useHash : false,
-                url : '${urlPrefix}/c/components/$1',
+                //url : '${urlPrefix}/c/components/$1',
                 release : '${releasePrefix}/c/components/$1'
             },
             {
                 reg : /^\/components\/(.*)$/i,
-                url : '${urlPrefix}/c/${name}/${version}/$1',
-                release : '${releasePrefix}/c/${name}/${version}/$1'
+                //url : '${urlPrefix}/c/$1',
+                release : '${releasePrefix}/c/$1'
             },
             {
                 reg : /^\/(.*)\/(.*\.(?:html|js|jade))$/,
                 useCache : false,
                 isViews : true,
-                url : '${urlPrefix}/${name}/${version}/$1/$2',
-                release : '${releasePrefix}/${name}/${version}/$1/$2'
+                //url : '${urlPrefix}/$1/$2',
+                release : '${releasePrefix}/$1/$2'
             },
             {
                 reg : /^\/(.*)\/(.*)$/,
                 useSprite : true,
                 isViews : true,
-                url : '${urlPrefix}/${name}/${version}/$1/$2',
-                release : '${releasePrefix}/${name}/${version}/$1/$2'
+                //url : '${urlPrefix}/$1/$2',
+                release : '${releasePrefix}/$1/$2'
             },
             {
                 reg : /^\/public\/(.*)$/,
                 useSprite : true,
-                url : '/public/${name}/${version}/$1',
-                release : '/public/${name}/${version}/$1'
+                //url : '/public/$1',
+                release : '/public/$1'
             },
             {
                 reg : 'map.json',
-                release : false
+                release : '$&'
             },
             {
                 reg : '**',
@@ -176,18 +180,6 @@ module.exports = {
                 useCompile : false
             }
         ]
-    },
-    uae_conf : {
-        config : {
-            description: 'UAE 会自动修改这个文件中的配置，请勿手工修改',
-            memcached : [
-                {
-                    name : '',
-                    host : '127.0.0.1',
-                    port : 11211
-                }
-            ]
-        }
     }
 };
 
