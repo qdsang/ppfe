@@ -1,6 +1,6 @@
 {
     "name": "ppfe",
-    "version": "0.0.10",
+    "version": "0.0.11",
     "description": "pp front-end integrated solution",
     "main": "index.js",
     "preferGlobal": true,
@@ -32,6 +32,7 @@
         "fis-parser-bdtmpl-chassis": "0.0.4",
         "fis-parser-utc": "0.0.2",
         "fis-parser-psd": "0.0.1",
+        "fis-postprocessor-region": "0.0.x",
         "fis-postpackager-simple": "0.0.21"
     },
     "author": ["fouber"],

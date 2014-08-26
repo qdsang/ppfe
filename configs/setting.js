@@ -19,7 +19,7 @@ module.exports = {
                 type : 'amd'
             },
             region: {
-                "remove-region": ["debug"]
+                "remove-region": []
             }
         },
         spriter : {

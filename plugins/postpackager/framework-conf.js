@@ -78,6 +78,8 @@ function makeComponentModulesAlias(componentFile, map, ret) {
                 fis.log.error('invalid version [' + version + '] of component [' + name + ']');
             }
         });
+    }else {
+        console.log(' component.json no file');
     }
 }
 
