@@ -9,6 +9,15 @@ module.exports = {
             jade: {
                 pretty : true,
                 //basedir : fis.project.getProjectPath()
+                data : function(file){
+                    var datafile = file.dirname + '/' + file.filename + '.jdata';
+                    var fs = require('fs'), data = {};
+                    if (fs.existsSync(datafile)) {
+                        var content = fs.readFileSync(datafile, "utf8");
+                        data = (new Function('return '+content+';'))();
+                    }
+                    return data;
+                }
             },
             'jade-inline' : {
                 isInlineRuntime : false

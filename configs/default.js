@@ -43,7 +43,7 @@ module.exports = {
         prepackager : [
             plugins.frameworkConf
         ],
-        postpackager : 'simple'
+        postpackager : ['autoload', 'simple']
     },
     roadmap : {
         ext : {
