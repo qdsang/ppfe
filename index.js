@@ -56,8 +56,39 @@ function rootPath(){
     return root;
 }
 
-// 入口功能
+// 设置自动刷新页面工具端口号
+function livereloadAutoPort(cb){
+    var portNext = 8140;
+    function getPort (cb) {
+        var net = require('net');
+        var port = portNext;
+        portNext += 1;
+        
+        var server = net.createServer();
+        server.listen(port, function (err) {
+            server.once('close', function () {
+                cb(port);
+            });
+            server.close();
+        });
+        server.on('error', function (err) {
+            getPort(cb);
+        });
+    }
+    getPort(function(port){
+        fis.config.set('livereload.port', port);
+        cb();
+    });
+}
+
 fis.run = function(argv){
+    livereloadAutoPort(function(){
+        fis.runLoad(argv);
+    });
+}
+
+// 入口功能
+fis.runLoad = function(argv){
     // 根据 package.json 文件位置定位root目录
     var root = rootPath();
     var info = fis.util.readJSON(root + '/package.json');
@@ -99,3 +130,4 @@ fis.run = function(argv){
 
     fis.cli.run(argv);
 };
+
