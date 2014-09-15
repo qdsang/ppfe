@@ -3,34 +3,15 @@ var fs = require('fs'),
 
 var fis = module.exports = require('fis');
 var name = 'ppfe';
-fis.require.prefixes = [ name, 'scrat', 'fis' ];
+fis.require.prefixes = [ name, 'fis' ];
 fis.cli.name = name;
 fis.cli.info = fis.util.readJSON(__dirname + '/package.json');
-fis.cli.version = require('./version.js');
-fis.cli.help.commands = [ 'release', 'install', 'server', 'init'];
 
 var defaultConfig = require('./configs/default.js');
 fis.config.merge(defaultConfig);
 
 var defaultSetting = require('./configs/setting.js');
 fis.config.merge(defaultSetting);
-
-// fis.olpm = function(info){
-//     if(typeof info === 'string') {
-//         info = {
-//             code : info,
-//             pack : arguments[1]
-//         };
-//     }
-//     info.pack = info.pack || fis.olpm.PACK_TYPE_EXTERNAL;
-//     fis.config.set('olpm', info);
-//     fis.config.set('roadmap.path', require('./configs/olpm.js'));
-//     fis.config.set('modules.prepackager', require('./plugins/postpackager/olpm-pack.js'));
-// };
-
-// fis.olpm.PACK_TYPE_INLINE   = 1;
-// fis.olpm.PACK_TYPE_EXTERNAL = 2;
-//fis.olpm.PACK_TYPE_COMBO    = 3;
 
 //alias
 Object.defineProperty(global, name, {
@@ -117,14 +98,13 @@ fis.runLoad = function(argv){
         nowResolve = path.resolve('.').split(path.sep);
     if (rootResolve.length < nowResolve.length) {
         var includes = [];
-        includes.push(nowResolve[rootResolve.length]);
+        includes.push(nowResolve[rootResolve.length] + '/');
 
         var includeConf = info['fisInclude'];
         if (includeConf) {
             includes = includes.concat(includeConf.split('|'));
         }
-        
-        var includeReg = new RegExp('^\/('+includes.join('|')+')', 'i');
+        var includeReg = new RegExp('^\/('+includes.join('|')+'|([^/]*$))', 'i');
         fis.config.set('project.include', includeReg);
     }
 

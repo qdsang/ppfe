@@ -1,6 +1,6 @@
 {
     "name": "ppfe",
-    "version": "0.0.13",
+    "version": "0.0.14",
     "description": "pp front-end integrated solution",
     "main": "index.js",
     "preferGlobal": true,
@@ -10,23 +10,20 @@
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1"
     },
-    "keywords": [ "fis", "uc", "pp" ],
+    "keywords": [ "fis", "pp" ],
     "repository": {
         "type": "git",
         "url": "https://github.com/qdsang/ppfe.git"
     },
     "dependencies": {
         "fis": "1.7.14",
-        "scrat-command-init" : "0.1.1-4",
-        "scrat-command-install" : "0.1.5-1",
-        "scrat-command-server"  : "0.0.11",
-        "scrat-parser-stylus"  : "0.0.4",
         "fis-lint-jshint": "0.0.9",
         "fis-parser-marked": "0.0.5",
         "fis-parser-handlebars" : "0.0.1",
         "fis-optimizer-html-minifier": "0.0.9",
         "fis-parser-compass": "0.0.2",
-        "fis-parser-jade": "0.0.11",
+        "fis-parser-jade": "0.0.12",
+        "fis-parser-jade-inline": "*",
         "fis-parser-less": "0.1.1",
         "fis-parser-coffee-script": "0.0.2",
         "fis-parser-bdtmpl-chassis": "0.0.4",

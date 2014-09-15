@@ -1,6 +1,6 @@
 var plugins = {
     define : require('../plugins/postprocessor/define.js'),
-    frameworkConf : require('../plugins/postpackager/framework-conf.js')
+    roadmapPath : require('./roadmap.path.js')
 };
 module.exports = {
     urlPrefix : '',
@@ -16,7 +16,7 @@ module.exports = {
             handlebars : 'handlebars',
             styl       : 'stylus',
             md         : 'marked',
-            tmpl : ['jade', 'utc'],
+            tmpl : 'utc',
 
             coffee : 'coffee-script',
             less : 'less',
@@ -41,7 +41,7 @@ module.exports = {
             css: 'region',
         },
         prepackager : [
-            plugins.frameworkConf
+            // plugins.frameworkConf
         ],
         postpackager : ['autoload', 'simple']
     },
@@ -58,7 +58,7 @@ module.exports = {
             md: 'html',
             psd: 'png'
         },
-        path : require('./roadmap.path.js')
+        path : plugins.roadmapPath
     }
 };
 
