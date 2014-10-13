@@ -90,7 +90,7 @@ fis.runLoad = function(argv){
             argv.push('--root');
             argv.push(root);
         }
-        console.log('\n开启 ' + mode + ' 模式：' + ' ' + argv.join(' '))
+        console.log('\n开启 ' + mode + ' 模式：' + ' \n  ' + argv.join(' '))
     }
 
 
@@ -98,6 +98,7 @@ fis.runLoad = function(argv){
         nowResolve = path.resolve('.').split(path.sep);
     if (rootResolve.length < nowResolve.length) {
         var includes = [];
+        console.log('子项目：' + nowResolve[rootResolve.length] + '');
         includes.push(nowResolve[rootResolve.length] + '/');
 
         var includeConf = info['fisInclude'];
@@ -107,7 +108,7 @@ fis.runLoad = function(argv){
         var includeReg = new RegExp('^\/('+includes.join('|')+'|([^/]*$))', 'i');
         fis.config.set('project.include', includeReg);
     }
-
+    
     fis.cli.run(argv);
 };
 

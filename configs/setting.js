@@ -59,7 +59,8 @@ module.exports = {
         },
         postpackager : {
             simple: {
-                autoCombine : true
+                autoCombine : true,
+                autoReflow : true
             }
         }
     }

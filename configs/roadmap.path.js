@@ -12,34 +12,59 @@ module.exports = [
         reg : '**.sh',
         release : false
     },
-
-
-    /* common start */
     {
-        reg : /^\/common\/(.*\.(?:tpl|jade|html))$/i,
+        //前端模板
+        reg : '**.tmpl',
+        //当做类js文件处理，可以识别__inline, __uri等资源定位标识
+        isJsonLike : true,
         isHtmlLike : true,
-        release : '/common/$1'
+        //只是内嵌，不用发布
+        release : false
     },
-    {
-        reg : /^\/common\/(.*)\.(styl|css|less|sass|scss)$/i,
-        id : '$1.css',
-        useSprite : true,
-        release : '/common/$1.$2'
-    },
-    {
-        reg : /^\/common\/(.*\.js)$/i,
-        id : '$1',
-        isMod : true,
-        release : '/common/$1'
-    },
-    /* common end */
     
     {
-        reg : /^\/(.*)\/(.*)$/,
-        useSprite : true,
-        isViews : true,
-        release : '/$1/$2'
+        //一级同名组件，可以引用短路径，比如modules/jquery/juqery.js
+        //直接引用为var $ = require('jquery');
+        reg : /^\/modules\/([^\/]+)\/\1\.(js)$/i,
+        //是组件化的，会被jswrapper包装
+        isMod : true,
+        //id为文件夹名
+        id : '$1',
+        release : '/$&'
     },
+    {
+        //modules目录下的其他脚本文件
+        reg : /^\/modules\/(.*)\.(js)$/i,
+        //是组件化的，会被jswrapper包装
+        isMod : true,
+        //id是去掉modules和.js后缀中间的部分
+        id : '$1',
+        release : '/$&'
+    },
+    
+    {
+        reg : /^\/(.*\.(?:tpl|jade|html))$/i,
+        isHtmlLike : true,
+        release : '/$1'
+    },
+    {
+        reg : /^\/(.*)\.(styl|css|less|sass|scss)$/i,
+        id : '$1.css',
+        useSprite : true,
+        release : '/$1.$2'
+    },
+    {
+        reg : /^\/(.*\.js)$/i,
+        id : '$1',
+        release : '/$1'
+    },
+    
+    // {
+    //     reg : /^\/(.*)\/(.*)$/,
+    //     useSprite : true,
+    //     isViews : true,
+    //     release : '/$1/$2'
+    // },
     {
         reg : /^\/pkg\/(.*)$/,
         release : '/pkg/$1'
