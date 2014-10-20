@@ -22,6 +22,15 @@ module.exports = [
         release : false
     },
     
+    // {
+    //     reg : /^\/(.*)\/page\/(.*)\.(js)$/i,
+    //     //是组件化的，会被jswrapper包装
+    //     isMod : true,
+    //     //id为文件夹名
+    //     id : '$1/$2',
+    //     release : '/$&'
+    // },
+    
     {
         //一级同名组件，可以引用短路径，比如modules/jquery/juqery.js
         //直接引用为var $ = require('jquery');
@@ -77,6 +86,9 @@ module.exports = [
     {
         reg : 'map.json',
         release : false
+    },
+    {
+        reg : '**.po'
     },
     {
         reg : '**',

@@ -1,6 +1,6 @@
 {
     "name": "ppfe",
-    "version": "0.0.15",
+    "version": "0.0.16",
     "description": "pp front-end integrated solution",
     "main": "index.js",
     "preferGlobal": true,
@@ -16,7 +16,7 @@
         "url": "https://github.com/qdsang/ppfe.git"
     },
     "dependencies": {
-        "fis": "1.7.14",
+        "fis": "1.8.3",
         "fis-lint-jshint": "0.0.9",
         "fis-parser-marked": "0.0.5",
         "fis-parser-handlebars" : "0.0.1",
@@ -29,13 +29,15 @@
         "fis-parser-bdtmpl-chassis": "0.0.4",
         "fis-parser-utc": "0.0.2",
         "fis-parser-psd": "0.0.1",
+        "fis-parser-po": "0.0.1",
         "fis-postprocessor-require-async": "*",
         "fis-postprocessor-region": "0.0.x",
         "fis-optimizer-html-minifier": "0.0.9",
         "fis-postpackager-simple": "0.0.23",
         "fis-postpackager-autoload": "0.0.13",
         "fis-deploy-default": "*",
-        "fis-deploy-git": "*"
+        "fis-deploy-git": "*",
+        "fis-command-xgettext2": "0.0.2"
     },
     "author": ["fouber"],
     "license": "MIT",

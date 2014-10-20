@@ -7,7 +7,7 @@ module.exports = {
     releasePrefix : '',
     project : {
         fileType : {
-            text : 'handlebars, jade, ejs, jsx, styl, jtpl',
+            text : 'handlebars, jade, ejs, jsx, styl, jtpl, po',
             image: 'psd'
         }
     },
@@ -30,7 +30,9 @@ module.exports = {
 
             psd : 'psd',
 
-            tpl    : 'bdtmpl-chassis'
+            tpl    : 'bdtmpl-chassis',
+
+            po : 'po'
         },
         lint : {
             js: 'jshint'
@@ -59,7 +61,8 @@ module.exports = {
             coffee : 'js',
             jade : 'html',
             md: 'html',
-            psd: 'png'
+            psd: 'png',
+            po : 'json'
         },
         path : plugins.roadmapPath
     }
