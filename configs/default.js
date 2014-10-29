@@ -1,7 +1,10 @@
 var plugins = {
     define : require('../plugins/postprocessor/define.js'),
-    roadmapPath : require('./roadmap.path.js')
+    roadmapPath : require('./roadmap.path.js'),
+    autoload : require('../plugins/postpackager/autoload.js'),
+    simple : require('../plugins/postpackager/simple.js')
 };
+
 module.exports = {
     urlPrefix : '',
     releasePrefix : '',
@@ -48,7 +51,8 @@ module.exports = {
         prepackager : [
             // plugins.frameworkConf
         ],
-        postpackager : ['autoload', 'simple']
+        postpackager : [plugins.autoload, plugins.simple], // ['autoload', 'simple'],//
+        deploy : ['default', 'git']
     },
     roadmap : {
         ext : {

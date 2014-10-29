@@ -58,10 +58,10 @@ module.exports = {
             }
         },
         postpackager : {
-            simple: {
-                autoCombine : true,
-                autoReflow : true
-            }
+            // simple: {
+            //     autoCombine : true,
+            //     autoReflow : true
+            // }
         }
     }
 };

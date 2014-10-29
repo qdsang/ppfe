@@ -50,6 +50,15 @@ module.exports = [
         id : '$1',
         release : '/$&'
     },
+    {
+        // view 目录下的其他脚本文件
+        reg : /^\/(.*)\/view\/(.*)\.(js)$/i,
+        //是组件化的，会被jswrapper包装
+        isMod : true,
+        //id是去掉 .js 后缀中间的部分
+        id : '$1/$2',
+        release : '/$&'
+    },
     
     {
         reg : /^\/(.*\.(?:tpl|jade|html))$/i,
@@ -67,7 +76,13 @@ module.exports = [
         id : '$1',
         release : '/$1'
     },
-    
+    {
+        reg : '/touch-icon.png',
+        useHash : false
+    },
+    {
+        reg : /^\/(.*\.(?:jpg|gif|png|jpeg))$/i
+    },
     // {
     //     reg : /^\/(.*)\/(.*)$/,
     //     useSprite : true,
