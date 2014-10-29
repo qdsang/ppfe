@@ -192,7 +192,7 @@ module.exports = function (ret, conf, settings, opt) { //打包后处理
         if (asyncList.length === 0){
             return content.replace(settings.resourceMapTag, '');
         }
-        var subpath = filepath + '/pkg/page_map_${index}.js'.replace(/^\//, '').replace('${index}', asyncCount);
+        var subpath = (filepath + '/pkg/page_map_${index}.js').replace(/^\//, '').replace('${index}', asyncCount);
         var file = genAsyncMap(asyncList, subpath, usedSync, settings.codeGen);
         asyncCount++;
         return injectAsyncWithMap(content, file);
