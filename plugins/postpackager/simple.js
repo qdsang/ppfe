@@ -10,8 +10,8 @@ var combineCache = {};
 var stable = require("stable");
 var path = require('path');
 var defaultSetting = {
-    autoCombine : false,
-    autoReflow : false,
+    autoCombine : true,
+    autoReflow : true,
     fullPackHit : {
         js : false,
         css : false

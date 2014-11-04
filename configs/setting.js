@@ -59,8 +59,11 @@ module.exports = {
         },
         postpackager : {
             // simple: {
-            //     autoCombine : true,
-            //     autoReflow : true
+            //      autoCombine : true//,
+            // //     autoReflow : true
+            // },
+            // autoload : {
+            //     useInlineMap: true
             // }
         }
     }

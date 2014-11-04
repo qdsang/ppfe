@@ -13,9 +13,10 @@ module.exports = function (ret, conf, settings, opt) { //打包后处理
         scriptTag : '<!--SCRIPT_PLACEHOLDER-->',
         styleTag : '<!--STYLE_PLACEHOLDER-->',
         resourceMapTag : '<!--RESOURCEMAP_PLACEHOLDER-->',
-        type : 'mod'
+        type : 'mod',
+        useInlineMap : true
     };
-
+    
     settings = fis.util.merge(defaultSettings, settings);
 
     if (typeof settings.codeGen !== Function) {
