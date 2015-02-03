@@ -1,6 +1,6 @@
 {
     "name": "ppfe",
-    "version": "0.0.23",
+    "version": "0.0.24",
     "description": "pp front-end integrated solution",
     "main": "index.js",
     "preferGlobal": true,
@@ -35,7 +35,7 @@
         "fis-optimizer-html-minifier": "0.0.9",
         "fis-postpackager-simple": "0.0.23",
         "fis-postpackager-autoload": "0.0.13",
-        "fis-deploy-git": "0.0.1",
+        "fis-deploy-git": "0.0.5",
         "fis-command-xgettext2": "0.0.6",
         "stable": "0.1.5"
     },
