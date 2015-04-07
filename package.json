@@ -1,6 +1,6 @@
 {
     "name": "ppfe",
-    "version": "0.0.24",
+    "version": "0.0.25",
     "description": "pp front-end integrated solution",
     "main": "index.js",
     "preferGlobal": true,
@@ -21,7 +21,7 @@
         "fis-parser-marked": "0.0.5",
         "fis-parser-handlebars" : "0.0.1",
         "fis-optimizer-html-minifier": "0.0.9",
-        "fis-parser-compass": "0.0.2",
+        "fis-parser-compass": "0.0.4",
         "fis-parser-jade": "0.0.11",
         "fis-parser-jade-inline": "*",
         "fis-parser-less": "0.1.1",
